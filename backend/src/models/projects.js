@@ -11,17 +11,18 @@ const projectSchema = new mongoose.Schema({
     },
     description: {
         type: String,
-        required: [false]
+        required: [true, "The project description is necessary."]
     },
-    sessionTime: {
-        type: Number,
-        required: [true, "The session time is requierd"]
-    },
-    createdAt: {
-        type: Date,
-        default: Date.now,
-        required: [true, "The day of creation is required"]
-    },
+    steps: [
+        {
+            _id: { 
+                type: mongoose.Schema.ObjectId,
+                auto: true
+            },
+            name: String,
+            index: Number
+        }
+    ],
     layer: {
         type: String,
         enum: ["Frontend", "Backend", "Fullstack"],
@@ -29,11 +30,15 @@ const projectSchema = new mongoose.Schema({
     },
     techs: [
         {
-            name: {type: String, required: [true]}
+            name: {type: String, required: true, unique: true}
         }
-    ]
+    ],
+    createdAt: {
+        type: Date,
+        default: Date.now,
+    },
 })
 
-const ProjectModel = mongoose.model('session', projectSchema)
+const ProjectModel = mongoose.model('project', projectSchema)
 
 export default ProjectModel
