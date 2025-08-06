@@ -14,7 +14,7 @@ app.use(express.json())
 dbConnect()
 
 
-app.use("/", router)
+app.use("/api", router)
 
 
 app.listen(process.env.PORT, (err) => {
