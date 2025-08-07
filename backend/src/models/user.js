@@ -14,7 +14,7 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: [true, "The password is requierd and the server didn't received it..."]
     }
-})
+}, {versionKey: false})
 
 const UserModel = mongoose.model('user', userSchema)
 

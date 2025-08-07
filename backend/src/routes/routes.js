@@ -1,5 +1,6 @@
 import express from 'express'
 import { loginUser, signUpUser } from '../controllers/user.js'
+import { createProject } from '../controllers/project.js'
 
 const router = express.Router()
 
@@ -14,5 +15,10 @@ router.get("/health", (req,res) => {
 
 router.post("/user", signUpUser)
 router.post("/user/login", loginUser)
+
+
+/* PROJECT ROUTES */
+
+router.post("/project", createProject)
 
 export default router

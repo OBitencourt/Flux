@@ -31,13 +31,21 @@ export const signUpUser = async (req, res) => {
 
 
 export const loginUser = async (req, res) => {
+
     const {
         email,
         password
     } = req.body
 
+    if (!email) {
+        return res.status(400).json({message: "Please put the email."})
+    }
+    if (!password) {
+        return res.status(400).json({message: "Please put the password."})
+    }
+
     const user = await UserModel.findOne({ email: email })
-    const userID = user._id
+    const userId = user._id
 
     const passwordsMatches = await bcrypt.compare(password, user.password)
 
@@ -45,9 +53,10 @@ export const loginUser = async (req, res) => {
         return res.status(400).json({message: "Password is wrong."})
     }
 
-    const token = jwt.sign({userID}, process.env.SECRET_KEY, { expiresIn: '24h'})
+    const token = jwt.sign({userId}, process.env.SECRET_KEY, { expiresIn: '24h'})
     
     
 
-    return res.status(200).json({message: "Login made with success", userID, token})
+    return res.status(200).json({message: "Login made with success", userId, token})
+    
 }

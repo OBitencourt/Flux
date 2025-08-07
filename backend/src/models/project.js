@@ -20,7 +20,11 @@ const projectSchema = new mongoose.Schema({
                 auto: true
             },
             name: String,
-            index: Number
+            index: Number,
+            isChecked: {
+                type: Boolean,
+                default: false
+            }
         }
     ],
     layer: {
@@ -37,7 +41,7 @@ const projectSchema = new mongoose.Schema({
         type: Date,
         default: Date.now,
     },
-})
+}, {versionKey: false})
 
 const ProjectModel = mongoose.model('project', projectSchema)
 
