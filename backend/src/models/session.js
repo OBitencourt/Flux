@@ -9,17 +9,13 @@ const sessionSchema = new mongoose.Schema({
         type: String,
         required: [true, "The session title is required."]
     },
-    finalDescription: {
-        type: String,
-        required: [false]
-    },
     sessionTime: {
         type: Number,
         required: [true, "The session time is requierd"]
     },
-    createdAt: {
+    finalDescription: {
         type: String,
-        required: [true, "The day of creation is required"]
+        required: [false]
     },
     layer: {
         type: String,
@@ -30,7 +26,11 @@ const sessionSchema = new mongoose.Schema({
         {
             name: {type: String, required: [true]}
         }
-    ]
+    ],
+    createdAt: {
+        type: Date,
+        default: Date.now
+    }
 })
 
 const SessionModel = mongoose.model('session', sessionSchema)
