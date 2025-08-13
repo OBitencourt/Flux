@@ -16,4 +16,5 @@
 body {
     background-color: var(--background-color);
     color: var(--text-light);
+    font-family: var(--font-inter);
 }
