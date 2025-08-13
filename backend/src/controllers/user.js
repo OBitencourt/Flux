@@ -24,9 +24,14 @@ export const signUpUser = async (req, res) => {
         password: cryptPassword
     })
 
-    newUser.save()
+    const returnedUser = {
+        name,
+        email
+    }
 
-    return res.status(200).json({message: "User created with success"}, newUser)
+    const token = jwt.sign({email}, process.env.SECRET_KEY, { expiresIn: '24h'})
+
+    return res.status(200).json({message: "User created with success!", returnedUser, token})
 }
 
 
