@@ -1,7 +1,8 @@
 import express from 'express'
 import { loginUser, signUpUser } from '../controllers/user.js'
-import { createProject } from '../controllers/project.js'
+import { createProject, getProjects } from '../controllers/project.js'
 import { createSession } from '../controllers/session.js'
+import { checkToken } from '../middlewares/checkToken.js'
 
 const router = express.Router()
 
@@ -22,7 +23,7 @@ router.post("/user/login", loginUser)
 // Private
 
 router.post("/project", createProject)
-
+router.get("/project/:userId", checkToken, getProjects)
 
 /* SESSION ROUTES */
 // Private

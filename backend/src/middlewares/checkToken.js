@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken'
 
-export default checkToken = async (req, res, next) => {
+export const checkToken = async (req, res, next) => {
     const authHeader = req.headers.authorization
 
     if (!authHeader) {
@@ -20,11 +20,14 @@ export default checkToken = async (req, res, next) => {
     }
 
     try {
-        const secret = process.env.secret
+        const secret = process.env.SECRET_KEY
 
         jwt.verify(token, secret, (err) => {
             if (err) return res.status(401).json({message: 'Token invalid'})
+            
+            next()
         })
+
     } catch {
         return res.status(404).json({message: 'Invalid Token'})
     }
