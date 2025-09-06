@@ -4,6 +4,7 @@
 :root {
     --background-color: #0B0A0A;
     --foreground-color: #0f0f0f;
+    --dark-bg: #1A1A1A;
     --border: #bbbbbb;
     --border-muted: #323232;
     --text-light: #ffffff;

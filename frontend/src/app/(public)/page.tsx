@@ -38,7 +38,7 @@ export default function Home() {
             className="absolute rounded-tr-[3rem] left-[35%] top-45"
           />
 
-          <div className="absolute left-[42%] top-85 text-center">
+          <button className="absolute left-[42%] top-85 text-center">
             Get Started with
             <br />
             <Image
@@ -50,7 +50,7 @@ export default function Home() {
                 height: 'auto'
               }}
             />
-          </div>
+          </button>
 
           <div className="flex w-[100%] border-1 border-(--border-muted) h-[90dvh] bg-(--foreground-color) rounded-[3rem] p-12">
             

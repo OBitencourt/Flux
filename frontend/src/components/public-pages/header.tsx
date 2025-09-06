@@ -36,9 +36,9 @@ export default function PublicHeader () {
 
                 </div>
                 <button className="w-[100px] bg-(--cp) rounded-xl text-(--foreground-color) border-1 text-sm font-semibold pb-3 pt-3 pl-2 pr-2 hover:brightness-85 transition duration-300 ease-in-out active:scale-95">
-                <Link href="signup">
-                    Sign Up
-                </Link>
+                    <Link href="signup">
+                        Sign Up
+                    </Link>
                 </button>
             </header>
         </>
