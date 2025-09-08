@@ -1,4 +1,4 @@
-import PublicHeader from "@/components/public-pages/header";
+import PublicHeader from "@/components/public-pages/public-header";
 import Image from "next/image";
 
 export default function Home() {
