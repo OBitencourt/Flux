@@ -1,6 +1,53 @@
+"use client"
 
+import { z } from "zod"
+import { useForm } from "react-hook-form"
+import { zodResolver } from "@hookform/resolvers/zod"
+
+const userSignUpSchema = z.object({
+    name: z.string().nonempty("Nome de usuário é obrigatório"),
+    email: z.email().nonempty("Email é obrigatório"),
+    password: z.string().nonempty("Insira uma senha de usuário"),
+    confirm_password: z.string().nonempty("Confirme a sua senha")
+}).refine(({ password, confirm_password}) => password === confirm_password, {
+  message: "As senhas precisam ser iguais",
+  path: ["confirm_password"]
+})
+
+type UserSignUpType = z.infer<typeof userSignUpSchema>
 
 export default function SignUp () {
+
+    const userSignUpForm = useForm<UserSignUpType>({
+        defaultValues: {
+            name: "",
+            email: "",
+            password: "",
+            confirm_password: ""
+        },
+        resolver: zodResolver(userSignUpSchema)
+    })
+
+    const handleSubmitSignUp = async (data: UserSignUpType) => {
+        console.log(data, "Formulario enviado.")
+
+        const payload = {
+            name: data.name,
+            email: data.email,
+            password: data.password
+        }
+
+        const response = await fetch("http://localhost:3333/api/user", {
+            method: "POST",
+            body: JSON.stringify(payload),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        
+        console.log(await response.json())
+
+    }
 
     return (
 
@@ -17,63 +64,72 @@ export default function SignUp () {
 
                         <div className="bg-(--border) h-[1px] w-full mt-6 mb-4"></div>
 
-                        <label
-                            htmlFor="name"
-                            className="text-(--text-light) text-lg mb-2 mt-3"
-                        >
-                            Full name
-                        </label>
-                        <input 
-                            id="name" 
-                            type="text" 
-                            placeholder="e.g: Arthur Bitencourt Vieira Silva" 
-                            className="bg-(--dark-bg) text-(--light-text) p-4 outline-black rounded-2xl focus-within:outline-1 focus-within:outline-(--cp)"
-                        />
-                        
-                        <label
-                            htmlFor="Email"
-                            className="text-(--text-light) text-lg mb-2 mt-3"
-                        >
-                            Email
-                        </label>
-                        <input 
-                            id="name" 
-                            type="text" 
-                            placeholder="e.g: youruser@gmail.com" 
-                            className="bg-(--dark-bg) text-(--light-text) p-4 outline-black rounded-2xl focus-within:outline-1 focus-within:outline-(--cp)"
-                        />
-                        
-                        <label
-                            htmlFor="password"
-                            className="text-(--text-light) text-lg mb-2 mt-3"
-                        >
-                            Password
-                        </label>
-                        <input 
-                            id="password" 
-                            type="text" 
-                            placeholder="e.g: yhA2Udh1" 
-                            className="bg-(--dark-bg) text-(--light-text) p-4 outline-black rounded-2xl focus-within:outline-1 focus-within:outline-(--cp)"
-                        />
+                        <form className="flex flex-col" onSubmit={userSignUpForm.handleSubmit(handleSubmitSignUp)}>
 
-                        <label
-                            htmlFor="confPassword"
-                            className="text-(--text-light) text-lg mb-2 mt-3"
-                        >
-                            Confirm Password
-                        </label>
-                        <input 
-                            id="confPassword" 
-                            type="text" 
-                            placeholder="e.g: yhA2Udh1" 
-                            className="bg-(--dark-bg) text-(--light-text) p-4 outline-black rounded-2xl focus-within:outline-1 focus-within:outline-(--cp)"
-                        />
 
-                        <button
-                            className="w-full bg-(--cp) text-(--foreground-color) p-4 mt-6 rounded-2xl font-semibold hover:opacity-75 transition duration-150 ease-in-out cursor-pointer"
-                        >
-                            Cadastrar-se
-                        </button>
+                            <label
+                                htmlFor="name"
+                                className="text-(--text-light) text-lg mb-2 mt-3"
+                            >
+                                Full name
+                            </label>
+                            <input 
+                                id="name" 
+                                type="text" 
+                                placeholder="e.g: Arthur Bitencourt Vieira Silva" 
+                                className="bg-(--dark-bg) text-(--light-text) p-4 outline-black rounded-2xl focus-within:outline-1 focus-within:outline-(--cp)"
+                                {...userSignUpForm.register("name")}
+                                
+                            />
+                            <label
+                                htmlFor="Email"
+                                className="text-(--text-light) text-lg mb-2 mt-3"
+                            >
+                                Email
+                            </label>
+                            <input 
+                                id="email" 
+                                type="text" 
+                                placeholder="e.g: youruser@gmail.com" 
+                                className="bg-(--dark-bg) text-(--light-text) p-4 outline-black rounded-2xl focus-within:outline-1 focus-within:outline-(--cp)"
+                                {...userSignUpForm.register("email")}
+                            />
+                            
+                            <label
+                                htmlFor="password"
+                                className="text-(--text-light) text-lg mb-2 mt-3"
+                            >
+                                Password
+                            </label>
+                            <input 
+                                id="password" 
+                                type="text" 
+                                placeholder="e.g: yhA2Udh1" 
+                                className="bg-(--dark-bg) text-(--light-text) p-4 outline-black rounded-2xl focus-within:outline-1 focus-within:outline-(--cp)"
+                                {...userSignUpForm.register("password")}
+                            />
+
+                            <label
+                                htmlFor="confPassword"
+                                className="text-(--text-light) text-lg mb-2 mt-3"
+                            >
+                                Confirm Password
+                            </label>
+                            <input 
+                                id="confPassword" 
+                                type="text" 
+                                placeholder="e.g: yhA2Udh1" 
+                                className="bg-(--dark-bg) text-(--light-text) p-4 outline-black rounded-2xl focus-within:outline-1 focus-within:outline-(--cp)"
+                                {...userSignUpForm.register("confirm_password")}
+                            />
+
+                            <button
+                                className="w-full bg-(--cp) text-(--foreground-color) p-4 mt-6 rounded-2xl font-semibold hover:opacity-75 transition duration-150 ease-in-out cursor-pointer"
+                                type="submit"
+                            >
+                                Cadastrar-se
+                            </button>
+                        </form>
 
                     </div>
                     <div className="w-[50%] border-1 border-(--border-muted) h-[95dvh] rounded-[50px] bg-(--foreground-color)">
