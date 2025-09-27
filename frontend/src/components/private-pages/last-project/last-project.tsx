@@ -1,4 +1,6 @@
+import { technologies } from "@/techs"
 
+const filteredTechs = technologies.filter((tech) => ["HTML", "CSS", "Javascript"].includes(tech.name))
 
 export default function LastProject () {
     return (
@@ -38,15 +40,21 @@ export default function LastProject () {
                             <div className="flex flex-col gap-2">
                                 <h3 className="text-lg font-semibold mt-6 mb-0.5">Techs:</h3>
                                 <div className="flex gap-3 items-center mt-0">
-                                    <div className="flex justify-center items-center p-2 border-1 border-(--border-muted) rounded-md">
-                                        CS
-                                    </div>
-                                    <div className="flex justify-center items-center p-2 border-1 border-(--border-muted) rounded-md">
-                                        HT
-                                    </div>
-                                    <div className="flex justify-center items-center p-2 border-1 border-(--border-muted) rounded-md">
-                                        JS
-                                    </div>
+                                    {
+                                        filteredTechs.length > 0 ? (
+                                            
+                                            filteredTechs.map(tech => (
+                                                <div key={tech.name} className="flex justify-center items-center p-2 border-1 border-(--border-muted) rounded-md">
+                                                    <img src={tech.src} alt={tech.name} />
+                                                </div>
+                                            ))
+                                        ) : (
+                                            <div className="flex justify-center items-center p-2 border-1 border-(--border-muted) rounded-md">
+                                                No techs found
+                                            </div>
+                                        )
+                                    }
+                            
                                 </div>
                             </div>
                             
@@ -54,7 +62,7 @@ export default function LastProject () {
                             <div className="flex flex-col gap-2">
                                 <h3 className="text-lg font-semibold mb-0 mt-6">Passos:</h3>
                                 <p className="text-sm">
-                                    O Projeto "Projeto Flux já tem 5/10 passos concluídos!"
+                                    O Projeto "Projeto Flux" já tem 5/10 passos concluídos!
                                 </p>
 
                                 <div className="bg-(--background-color) w-full px-3 py-2 relative flex justify-between items-center rounded-xl gap-3 mt-2">
