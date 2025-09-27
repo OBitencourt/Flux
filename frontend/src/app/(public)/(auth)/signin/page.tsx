@@ -65,11 +65,11 @@ export default function SignIn () {
     return ( 
         <>
             <div className="w-full h-dvh flex justify-center items-center">
-                <div className="flex flex-col w-[30%]">
-                    <h2 className="text-center text-4xl font-bold mb-3">Welcome Back!</h2>
+                <div className="flex flex-col w-[32%] bg-(--foreground-color) px-8 py-14 rounded-xl border-1 border-(--border-muted)">
+                    <h2 className="text-center text-4xl font-bold mb-1">Welcome Back!</h2>
                     <p className="text-center text-(--muted) text-xl">Login to have access to all your data</p>
 
-                    <div className="bg-(--border-muted) h-[1px] w-full mt-6 mb-4"></div>
+                    <div className="bg-gradient-to-r from-(--background-color) via-(--cp) to-(--background-color) h-[1px] w-full mt-8 mb-6 opacity-50"></div>
 
                     <form
                         onSubmit={userSignInForm.handleSubmit(handleSignInSubmit)}
@@ -87,7 +87,7 @@ export default function SignIn () {
                             type="text" 
                             placeholder="e.g: youruser@gmail.com"
                             {...userSignInForm.register("email")} 
-                            className="bg-(--dark-bg) text-(--light-text) p-4 outline-black rounded-xl focus-within:outline-1 focus-within:outline-(--cp)"
+                            className="bg-(--dark-bg) text-(--light-text) p-4 outline-black rounded-lg border-1 border-(--border-muted) focus-within:outline-1 focus-within:outline-(--cp)"
                         />
                         
                         <label
@@ -101,11 +101,11 @@ export default function SignIn () {
                             type="text" 
                             placeholder="e.g: yhA2Udh1" 
                             {...userSignInForm.register("password")} 
-                            className="bg-(--dark-bg) text-(--light-text) p-4 outline-black rounded-xl focus-within:outline-1 focus-within:outline-(--cp)"
+                            className="bg-(--dark-bg) text-(--light-text) p-4 outline-black rounded-lg border-1 border-(--border-muted) focus-within:outline-1 focus-within:outline-(--cp)"
                         />
 
                         <button
-                            className="w-full bg-(--cp) text-(--foreground-color) text-lg p-4 mt-6 rounded-xl font-bold hover:opacity-75 transition duration-150 ease-in-out cursor-pointer"
+                            className="w-full bg-(--cp) text-(--foreground-color) text-lg py-3.5 mt-8 rounded-lg font-bold hover:opacity-75 transition duration-150 ease-in-out cursor-pointer"
                             type='submit'
                         >
                             Entrar
@@ -113,7 +113,7 @@ export default function SignIn () {
                     
                     </form>
 
-                    <div className="bg-(--border-muted) h-[1px] w-full mt-6 mb-4"></div>
+                    <div className="bg-gradient-to-r from-(--background-color) via-(--cp) to-(--background-color) h-[1px] w-full mt-10 mb-4 opacity-50"></div>
 
                     <div className="w-4 bg-(--foreground-color)">
 
