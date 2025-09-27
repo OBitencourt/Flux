@@ -3,6 +3,8 @@
 import { z } from "zod"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
+import { useCookies } from "react-cookie"
+import { useRouter } from "next/navigation"
 
 const userSignUpSchema = z.object({
     name: z.string().nonempty("Nome de usuário é obrigatório"),
@@ -16,7 +18,14 @@ const userSignUpSchema = z.object({
 
 type UserSignUpType = z.infer<typeof userSignUpSchema>
 
+type UserSignUpResponseType = {
+    token: string,
+    newUserId: string
+}
+
 export default function SignUp () {
+    const [cookies, setCookies] = useCookies(["token", "userId"])
+    const router = useRouter()
 
     const userSignUpForm = useForm<UserSignUpType>({
         defaultValues: {
@@ -45,7 +54,16 @@ export default function SignUp () {
             }
         })
         
-        console.log(await response.json())
+        const userData:UserSignUpResponseType = await response.json()
+
+        const { token, newUserId } = userData
+
+        setCookies("token", token, {path: '/'})
+        setCookies("userId", newUserId, {path: '/'})
+
+        if(token) {
+            router.push("/dashboard/home")
+        }
 
     }
 

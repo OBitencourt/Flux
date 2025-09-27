@@ -7,7 +7,7 @@ export const signUpUser = async (req, res) => {
     const {
         name,
         email,
-        password
+        password,
     } = req.body
 
     const emailAlreadyExists = await UserModel.findOne({email: email})
@@ -25,14 +25,11 @@ export const signUpUser = async (req, res) => {
         password: cryptPassword
     })
 
-    const returnedUser = {
-        name,
-        email
-    }
+    const newUserId = newUser._id
 
     const token = jwt.sign({email}, process.env.SECRET_KEY, { expiresIn: '24h'})
 
-    return res.status(200).json({message: "User created with success!", returnedUser, token})
+    return res.status(200).json({message: "User created with success!", newUserId, token})
 }
 
 

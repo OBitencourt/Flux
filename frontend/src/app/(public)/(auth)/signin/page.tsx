@@ -4,6 +4,7 @@ import { z } from 'zod'
 import { useForm } from "react-hook-form"
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useCookies } from 'react-cookie'
+import { useRouter } from 'next/navigation'
 
 const userSignInSchema = z.object({
     email: z.string().nonempty("Insira um email válido."),
@@ -12,8 +13,15 @@ const userSignInSchema = z.object({
 
 type UserSignInType = z.infer<typeof userSignInSchema>
 
+type UserSignInResponse = {
+    userId: string
+    message: string
+    token: string
+}
+
 export default function SignIn () {
-    const [cookie, setCookie] = useCookies(["token"])
+    const [cookie, setCookie] = useCookies(["token", "userId"])
+    const router = useRouter()
 
     const userSignInForm = useForm<UserSignInType>({
         defaultValues: {
@@ -23,8 +31,7 @@ export default function SignIn () {
         resolver: zodResolver(userSignInSchema)
     })
  
-    const handeSignInSubmit = async (data: UserSignInType) => {
-        console.log(data)
+    const handleSignInSubmit = async (data: UserSignInType) => {
 
         const response = await fetch("http://localhost:3333/api/user/login", {
             method: 'POST',
@@ -33,12 +40,25 @@ export default function SignIn () {
             },
             body: JSON.stringify(data)
         })
+        
+        if(!response.ok) {
+            const text = await response.text()
+            console.error("Erro na response:", text)
+        }
 
-        const userData = await response.json()
+        const userData:UserSignInResponse = await response.json()
 
-        const { token } = userData
+        const { token, userId } = userData
 
         setCookie('token', token, {path: '/'})
+        setCookie('userId', userId, {path: '/'})
+
+        if(token) {
+            router.push("/dashboard/home")
+        } else {
+            console.log("Não há token guardado nos cookies")
+        }
+
     }
 
 
@@ -52,7 +72,7 @@ export default function SignIn () {
                     <div className="bg-(--border-muted) h-[1px] w-full mt-6 mb-4"></div>
 
                     <form
-                        onSubmit={userSignInForm.handleSubmit(handeSignInSubmit)}
+                        onSubmit={userSignInForm.handleSubmit(handleSignInSubmit)}
                         className="flex flex-col"
                     >
 
@@ -67,7 +87,7 @@ export default function SignIn () {
                             type="text" 
                             placeholder="e.g: youruser@gmail.com"
                             {...userSignInForm.register("email")} 
-                            className="bg-(--dark-bg) text-(--light-text) p-4 outline-black rounded-2xl focus-within:outline-1 focus-within:outline-(--cp)"
+                            className="bg-(--dark-bg) text-(--light-text) p-4 outline-black rounded-xl focus-within:outline-1 focus-within:outline-(--cp)"
                         />
                         
                         <label
@@ -81,14 +101,14 @@ export default function SignIn () {
                             type="text" 
                             placeholder="e.g: yhA2Udh1" 
                             {...userSignInForm.register("password")} 
-                            className="bg-(--dark-bg) text-(--light-text) p-4 outline-black rounded-2xl focus-within:outline-1 focus-within:outline-(--cp)"
+                            className="bg-(--dark-bg) text-(--light-text) p-4 outline-black rounded-xl focus-within:outline-1 focus-within:outline-(--cp)"
                         />
 
                         <button
-                            className="w-full bg-(--cp) text-(--foreground-color) p-4 mt-6 rounded-2xl font-semibold hover:opacity-75 transition duration-150 ease-in-out cursor-pointer"
+                            className="w-full bg-(--cp) text-(--foreground-color) text-lg p-4 mt-6 rounded-xl font-bold hover:opacity-75 transition duration-150 ease-in-out cursor-pointer"
                             type='submit'
                         >
-                            Cadastrar-se
+                            Entrar
                         </button>
                     
                     </form>
