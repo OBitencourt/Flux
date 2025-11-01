@@ -3,6 +3,7 @@ import "../globals.css";
 import { Inter } from 'next/font/google'
 import Sidebar from "@/components/private-pages/sidebar/sidebar";
 import PrivateHeader from "@/components/private-pages/private-header";
+import CookiesWrapper from "@/providers/CookiesProviderWrapper";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -22,12 +23,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.variable} antialiased`}>
-        <PrivateHeader />
-        <div className="flex">
+        <CookiesWrapper>
 
-          <Sidebar />
-          {children}
-        </div>
+          <PrivateHeader />
+          <div className="flex">
+
+            <Sidebar />
+            {children}
+          </div>
+        </CookiesWrapper>
       </body>
     </html>
   );

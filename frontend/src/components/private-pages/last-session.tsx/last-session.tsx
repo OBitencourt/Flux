@@ -31,7 +31,7 @@ export default function LastSession () {
                                         filteredTechs.map((tech) => {
                                             
                                             return (
-                                                <div className="flex justify-center items-center p-2 border-1 border-(--border-muted) bg-(--dark-bg) rounded-md">
+                                                <div key={tech.name} className="flex justify-center items-center p-2 border-1 border-(--border-muted) bg-(--dark-bg) rounded-md">
                                                     <img src={tech.src} alt={tech.name} />
                                                 </div>
                                             )
