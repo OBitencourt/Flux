@@ -14,6 +14,22 @@
     --destructive: #F74A4A;
 }
 
+@theme {
+    --color-background: hsl(0 0% 4%);       /* #0B0A0A */
+    --color-foreground: hsl(0 0% 6%);       /* #0F0F0F */
+    --color-dark-bg: hsl(0 0% 10%);         /* #1A1A1A */
+    
+    --color-border: hsl(0 0% 73%);          /* #BBBBBB */
+    --color-border-muted: hsl(0 0% 20%);    /* #323232 */
+
+    --color-text-light: hsl(0 0% 100%);     /* #FFFFFF */
+    --color-muted: hsl(0 0% 70%);           /* #B3B3B3 */
+
+    --color-primary: hsl(103 67% 51%);           /* #5DD62C */
+
+    --color-destructive: hsl(0 93% 63%);    /* #F74A4A */
+}
+
 
 body {
     background-color: var(--background-color);

@@ -52,10 +52,10 @@ export default function Home() {
             />
           </button>
 
-          <div className="flex w-[100%] border-1 border-(--border-muted) h-[90dvh] bg-(--foreground-color) rounded-[3rem] p-12">
+          <div className="flex w-[100%] border-1 border-border-muted h-[90dvh] bg-foreground rounded-[3rem] p-12">
             
             <div className="flex self-end">
-              <button className="border-1 border-(--border-muted) pt-5 pb-5 pl-10 pr-10 rounded-[3rem] hover:bg-(--cp) hover:text-(--foreground-color) font-semibold transition duration-150 ease-in-out hover:border-(--cp) hover:translate-x-1 hover:translate-y-[-4px]">
+              <button className="border-1 border-border-muted pt-5 pb-5 pl-10 pr-10 rounded-[3rem] hover:bg-primary hover:text-foreground font-semibold transition duration-150 ease-in-out hover:border-primary hover:translate-x-1 hover:translate-y-[-4px]">
                 Get Started
               </button>
             </div>
