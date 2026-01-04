@@ -10,7 +10,7 @@ export default function Sidebar () {
 
     return (
         <>
-            <div className="w-[16%] h-[89dvh] flex flex-col border-r-1 border-border-muted px-6 py-4">
+            <div className="w-[300px] h-[89dvh] flex flex-col border-r border-border-muted px-6 py-4">
                 
                 <SidebarButton route="/dashboard/home" active={pathname === "/dashboard/home" ? true : false}>
                     <img
@@ -20,7 +20,7 @@ export default function Sidebar () {
                     Home
                 </SidebarButton>
 
-                <div className="my-6 border-y-1 border-border-muted py-8">
+                <div className="my-6 border-y border-border-muted py-8">
                     <SidebarButton route="/dashboard/tasks" active={pathname === "/dashboard/tasks" ? true : false}>
                         <img
                             src={pathname === "/dashboard/tasks" ? "/images/tasks-green-icon.svg" : "/images/tasks-icon.svg"}

@@ -1,6 +1,6 @@
 import express from 'express'
 import { loginUser, signUpUser } from '../controllers/user.js'
-import { createProject, getProjects } from '../controllers/project.js'
+import { createProject, getProjects, getSingleProject } from '../controllers/project.js'
 import { createSession, getSessions } from '../controllers/session.js'
 import { checkToken } from '../middlewares/checkToken.js'
 
@@ -24,6 +24,7 @@ router.post("/user/login", loginUser)
 
 router.post("/project",  checkToken, createProject)
 router.get("/project/:userId", checkToken, getProjects)
+router.get("/project/getSingleProject/:projectId", checkToken, getSingleProject)
 
 /* SESSION ROUTES */
 // Private

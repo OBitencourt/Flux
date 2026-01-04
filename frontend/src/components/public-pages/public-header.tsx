@@ -6,12 +6,13 @@ export default function PublicHeader () {
     
     return (
         <>
-            <header className="flex w-[100%] justify-between pt-4 pl-8 pr-8">
+            <header className="flex w-full justify-between pt-4 pl-8 pr-8">
                 <div className="w-[25%]">
 
                 <Image 
                     src="/images/flux-logo.png"
                     alt="flux-logo"
+                    unoptimized
                     width={100}
                     height={100}
                     style={{
@@ -35,7 +36,7 @@ export default function PublicHeader () {
                 <div className="w-[25%]">
 
                 </div>
-                <button className="w-[100px] bg-(--cp) rounded-xl text-(--foreground-color) border-1 text-sm font-semibold pb-3 pt-3 pl-2 pr-2 hover:brightness-85 transition duration-300 ease-in-out active:scale-95">
+                <button className="w-[100px] bg-(--cp) rounded-xl text-(--foreground-color) border text-sm font-semibold pb-3 pt-3 pl-2 pr-2 hover:brightness-85 transition duration-300 ease-in-out active:scale-95">
                     <Link href="signup">
                         Sign Up
                     </Link>
