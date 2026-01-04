@@ -1,8 +1,11 @@
+"use client"
+
 import Image from "next/image"
-
-
+import ProfilePopover from "./profile-popover/profile-popover"
+import { useState } from "react"
 
 export default function PrivateHeader () {
+    const [profilePopoverActive, setProfilePopoverActive] = useState(false)
 
     return (
         <>
@@ -42,8 +45,13 @@ export default function PrivateHeader () {
                             className="w-5"
                         />
                     </div>
-                    <div className="bg-primary cursor-pointer hover:bg-primary/90 transition font-medium text-md text-foreground rounded-md text-center w-[35%] flex items-center justify-center">
+                    <div 
+                        onClick={() => setProfilePopoverActive(true)}
+                        className={`bg-primary cursor-pointer hover:bg-primary/80 transition font-medium text-md text-foreground rounded-md text-center w-[35%] flex items-center justify-center relative`}
+                    >
                         AB
+
+                        <ProfilePopover onClose={() => setProfilePopoverActive(false)} profilePopoverActive={profilePopoverActive} />
                     </div>
                 </div>
             </div>        
