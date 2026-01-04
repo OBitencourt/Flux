@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useCookies } from "react-cookie"
 import { useRouter } from "next/navigation"
+import Link from "next/link"
 
 const userSignUpSchema = z.object({
     name: z.string().nonempty("Nome de usuário é obrigatório"),
@@ -80,79 +81,85 @@ export default function SignUp () {
                             Joins us and have access to your best organization
                         </p>
 
-                        <div className="bg-gradient-to-r from-(--background-color) via-(--cp) to-(--background-color) h-[1px] w-full mt-6 mb-4"></div>
+                        <div className="bg-linear-to-r from-(--background-color) via-primary to-(--background-color) h-px w-full mt-6 mb-4"></div>
 
                         <form className="flex flex-col" onSubmit={userSignUpForm.handleSubmit(handleSubmitSignUp)}>
 
 
                             <label
                                 htmlFor="name"
-                                className="text-(--text-light) text-lg mb-2 mt-3"
+                                className="text-muted text-md mb-2 mt-3"
                             >
-                                Full name
+                                Full name:
                             </label>
                             <input 
                                 id="name" 
                                 type="text" 
                                 placeholder="e.g: Arthur Bitencourt Vieira Silva" 
-                                className="bg-(--dark-bg) text-(--light-text) p-4 outline-black rounded-lg focus-within:outline-1 focus-within:outline-(--cp) border-1 border-(--border-muted)"
+                                className="bg-(--dark-bg) text-text-light p-3 outline-black rounded-xl focus-within:outline-1 focus-within:outline-primary border border-(--border-muted)"
                                 {...userSignUpForm.register("name")}
                                 
                             />
                             <label
                                 htmlFor="Email"
-                                className="text-(--text-light) text-lg mb-2 mt-3"
+                                className="text-muted text-md  mb-2 mt-3"
                             >
-                                Email
+                                Email:
                             </label>
                             <input 
                                 id="email" 
                                 type="text" 
                                 placeholder="e.g: youruser@gmail.com" 
-                                className="bg-(--dark-bg) text-(--light-text) p-4 outline-black rounded-lg focus-within:outline-1 focus-within:outline-(--cp) border-1 border-(--border-muted)"
+                                className="bg-(--dark-bg) text-text-light p-3 outline-black rounded-xl focus-within:outline-1 focus-within:outline-primary border border-border-muted"
                                 {...userSignUpForm.register("email")}
                             />
                             
                             <label
                                 htmlFor="password"
-                                className="text-(--text-light) text-lg mb-2 mt-3"
+                                className="text-muted text-md  mb-2 mt-3"
                             >
-                                Password
+                                Password:
                             </label>
                             <input 
                                 id="password" 
                                 type="text" 
                                 placeholder="e.g: yhA2Udh1" 
-                                className="bg-(--dark-bg) text-(--light-text) p-4 outline-black rounded-lg focus-within:outline-1 focus-within:outline-(--cp) border-1 border-(--border-muted)"
+                                className="bg-(--dark-bg) text-text-light p-3 outline-black rounded-xl focus-within:outline-1 focus-within:outline-primary border border-border-muted"
                                 {...userSignUpForm.register("password")}
                             />
 
                             <label
                                 htmlFor="confPassword"
-                                className="text-(--text-light) text-lg mb-2 mt-3"
+                                className="text-muted text-md  mb-2 mt-3"
                             >
-                                Confirm Password
+                                Confirm Password:
                             </label>
                             <input 
                                 id="confPassword" 
                                 type="text" 
                                 placeholder="e.g: yhA2Udh1" 
-                                className="bg-(--dark-bg) border-1 border-(--border-muted) text-(--light-text) p-4 outline-black rounded-lg focus-within:outline-1 focus-within:outline-(--cp)"
+                                className="bg-(--dark-bg) border border-border-muted text-text-light p-3 outline-black rounded-xl focus-within:outline-1 focus-within:outline-primary"
                                 {...userSignUpForm.register("confirm_password")}
                             />
 
                             <button
-                                className="w-full bg-(--cp) text-(--foreground-color) p-4 mt-8 rounded-lg font-semibold hover:opacity-75 transition duration-150 ease-in-out cursor-pointer"
+                                className="w-full bg-primary text-foreground p-3 mt-8 rounded-xl font-semibold hover:opacity-75 transition duration-150 ease-in-out cursor-pointer"
                                 type="submit"
                             >
                                 Cadastrar-se
                             </button>
+
+                            <span className='text-sm mt-6 text-muted self-center'>
+                                Já tem uma conta? <Link className='text-primary hover:brightness-70 transition duration-150 ease-in-out' href="/signin">Entre aqui.</Link>
+                            </span>
                         </form>
 
                     </div>
-                    <div className="w-[50%] border-1 border-(--border-muted) h-[93dvh] rounded-[50px] bg-(--foreground-color)">
+                    <div className="w-[50%] border border-border-muted h-[93dvh] rounded-[50px] bg-foreground">
 
                     </div>
+
+                    
                 </div>
             </div>
         

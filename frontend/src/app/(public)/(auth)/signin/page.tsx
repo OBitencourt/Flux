@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form"
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useCookies } from 'react-cookie'
 import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 
 const userSignInSchema = z.object({
     email: z.string().nonempty("Insira um email válido."),
@@ -65,7 +66,7 @@ export default function SignIn () {
     return ( 
         <>
             <div className="w-full h-dvh flex justify-center items-center">
-                <div className="flex flex-col w-[32%] bg-(--foreground-color) px-8 py-14 rounded-xl border border-(--border-muted)">
+                <div className="flex flex-col w-[28%] bg-foreground px-10 py-14 rounded-xl border border-border-muted">
                     <h2 className="text-center text-4xl font-bold mb-1">Welcome Back!</h2>
                     <p className="text-center text-(--muted) text-xl">Login to have access to all your data</p>
 
@@ -78,46 +79,44 @@ export default function SignIn () {
 
                         <label
                             htmlFor="Email"
-                            className="text-(--text-light) text-lg mb-2 mt-3"
+                            className="text-muted text-md mb-2 mt-3"
                         >
-                            Email
+                            Email:
                         </label>
                         <input 
                             id="name" 
                             type="text" 
                             placeholder="e.g: youruser@gmail.com"
                             {...userSignInForm.register("email")} 
-                            className="bg-(--dark-bg) text-(--light-text) p-4 outline-black rounded-lg border border-(--border-muted) focus-within:outline-1 focus-within:outline-(--cp)"
+                            className="bg-(--dark-bg) text-(--light-text) p-3 outline-black rounded-xl border border-(--border-muted) focus-within:outline-1 focus-within:outline-(--cp)"
                         />
                         
                         <label
                             htmlFor="password"
-                            className="text-(--text-light) text-lg mb-2 mt-3"
+                            className="text-muted text-md mb-2 mt-3"
                         >
-                            Password
+                            Password:
                         </label>
                         <input 
                             id="password" 
                             type="text" 
                             placeholder="e.g: yhA2Udh1" 
                             {...userSignInForm.register("password")} 
-                            className="bg-(--dark-bg) text-(--light-text) p-4 outline-black rounded-lg border border-(--border-muted) focus-within:outline-1 focus-within:outline-(--cp)"
+                            className="bg-(--dark-bg) text-(--light-text) p-3 outline-black rounded-xl border border-(--border-muted) focus-within:outline-1 focus-within:outline-(--cp)"
                         />
 
                         <button
-                            className="w-full bg-(--cp) text-(--foreground-color) text-lg py-3.5 mt-8 rounded-lg font-bold hover:opacity-75 transition duration-150 ease-in-out cursor-pointer"
+                            className="w-full bg-primary text-foreground text-lg py-3 mt-8 rounded-xl font-bold hover:opacity-75 transition duration-150 ease-in-out cursor-pointer"
                             type='submit'
                         >
                             Entrar
                         </button>
-                    
+
+                        <span className='text-sm mt-6 text-muted self-center'>
+                            Não tem uma conta? <Link className='text-primary hover:brightness-70 transition duration-150 ease-in-out' href="/signup">Cadastre-se!</Link>
+                        </span>
                     </form>
 
-                    <div className="bg-linear-to-r from-(--background-color) via-(--cp) to-(--background-color) h-px w-full mt-10 mb-4 opacity-50"></div>
-
-                    <div className="w-4 bg-(--foreground-color)">
-
-                    </div>
                 </div>
             </div>       
         </>
