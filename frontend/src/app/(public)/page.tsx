@@ -11,7 +11,6 @@ export default function Home() {
           <Image
             src="/images/light-hero-1.png"
             alt="light"
-            unoptimized
             width={1000}
             height={100}
             style={{
@@ -22,7 +21,6 @@ export default function Home() {
           <Image
             src="/images/light-hero-2.png"
             alt="light"
-            unoptimized
             width={1000}
             height={100}
             style={{
@@ -48,7 +46,6 @@ export default function Home() {
             <Image
               src="/images/flux-logo.png"
               alt="light"
-              unoptimized
               width={250}
               height={100}
               style={{

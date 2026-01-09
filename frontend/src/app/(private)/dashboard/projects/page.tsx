@@ -64,18 +64,20 @@ export default function Projects () {
 
     return (
         <>
-            <div className="flex flex-col gap-8 pl-24 pr-20 py-12 w-full">
-                <h2 className="text-text-light text-4xl font-semibold">
+            <div className="flex flex-col pl-24 pr-20 py-12 w-full">
+                <h2 className="text-text-light text-4xl mb-4 font-semibold">
                     Projects
                 </h2>
-                <div className="flex gap-4">
-                    <div className="rounded-lg border border-muted py-2 px-4 hover:bg-dark-bg transition duration-100 ease-in-out cursor-default">
+
+                <span className="mb-2">Filter:</span>
+                <div className="flex gap-2 mb-8">
+                    <div className="rounded-lg border border-border-muted py-2 px-3 hover:bg-dark-bg transition duration-100 ease-in-out cursor-default">
                         Frontend
                     </div>
-                    <div className="rounded-lg border border-muted py-2 px-4 hover:bg-dark-bg transition duration-100 ease-in-out cursor-default">
+                    <div className="rounded-lg border border-border-muted py-2 px-3 hover:bg-dark-bg transition duration-100 ease-in-out cursor-default">
                         Backend
                     </div>
-                    <div className="rounded-lg border border-muted py-2 px-4 hover:bg-dark-bg transition duration-100 ease-in-out cursor-default">
+                    <div className="rounded-lg border border-border-muted py-2 px-3 hover:bg-dark-bg transition duration-100 ease-in-out cursor-default">
                         Fullstack
                     </div>
                 </div>
@@ -85,7 +87,7 @@ export default function Projects () {
                     {
                         
                         
-                        projects.length > 0 ? (
+                        projects ? (
                             projects.map((project) => {
                                 const projectTechs = project.techs
                                 const techs = projectTechs.map(tech => tech.name)
@@ -95,15 +97,19 @@ export default function Projects () {
                                     <div
                                         onClick={() => {handleProjectRedirect(project._id)}}
                                         key={project._id}
-                                        className="bg-foreground border border-border-muted hover:brightness-130 hover:scale-105 transition duration-100 ease-in-out rounded-xl p-6 flex gap-10 shadow-[0px_9px_0px_0px_rgba(50,50,50,1)]"
+                                        className="bg-foreground border border-border-muted hover:brightness-110 hover:scale-105 transition duration-100 ease-in-out rounded-md p-6 flex gap-10 shadow-[0px_9px_0px_0px_rgba(50,50,50,1)]"
                                     >
                                         <div className="flex flex-col">
                                             <h3 className="font-semibold text-2xl mb-3 text-text-light">
                                                 {project.title}
                                             </h3>
                                             <div className="mb-4">
-                                                <h6 className="text-lg font-medium text-muted">Iniciado no dia: 12/05/2025</h6>
-                                                <h6 className="text-lg font-medium text-muted">Prazo: 12/08/2025</h6>
+                                                <h6 className="text-md font-medium text-muted">
+                                                    Iniciado no dia: <span className="text-primary/70">12/05/2025</span>
+                                                </h6>
+                                                <h6 className="text-md font-medium text-muted">
+                                                    Prazo: <span className="text-primary/70">12/08/2025</span>
+                                                </h6>
                                             </div>
                                             <div className="mt-3 flex gap-3 items-center">
                                                 {
@@ -131,7 +137,7 @@ export default function Projects () {
                                             </div>
                                         </div>
                                         <div className="flex flex-col gap-4 items-end">
-                                            <div className="border-border border px-3 py-1.5 rounded-lg text-border">
+                                            <div className="border-primary/50 border px-2 py-1 rounded-md text-primary/70">
                                                 {project.layer}
                                             </div>
                                         </div>
@@ -139,19 +145,19 @@ export default function Projects () {
                                 )}
                             )
                         ) : (
-                            <h3>
-                                No projects found
+                            <h3 className="mr-5">
+                                No projects found. Create your first!
                             </h3>
                         )
                         
                     } 
                     
-                    <div className="bg-foreground hover:brightness-120 transition duration-100 ease-in-out rounded-xl p-6 flex justify-center items-center gap-10  border-dashed border border-border w-1/4 shadow-[0px_9px_0px_0px_rgba(220,220,220,1)]">
+                    <div className="bg-foreground hover:brightness-120 transition duration-100 ease-in-out rounded-md p-6 flex justify-center items-center gap-10  border-dashed border border-border-muted w-1/4 shadow-[0px_9px_0px_0px_#1E1E1E]">
                         <div className="flex flex-col">
-                            <h3 className="font-semibold text-2xl mb-3 text-text-light">
+                            <h3 className="font-semibold text-md text-muted">
                                 Add project
                             </h3>
-                            <span className="font-semibold text-4xl mb-3 text-text-light text-center">
+                            <span className="font-light text-3xl text-muted text-center">
                                 +
                             </span>
                         </div>

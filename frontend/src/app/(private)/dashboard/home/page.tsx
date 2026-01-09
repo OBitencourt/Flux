@@ -16,10 +16,9 @@ export default function Home () {
                         </div>
 
                         <div className="flex gap-8 mt-6">
-                            <div className="w-[33%] py-8  pl-6 flex justify-start items-center border border-border-muted rounded-2xl bg-foreground hover:bg-dark-bg transition duration-150 ease-in-out shadow-[0px_9px_0px_0px_rgba(50,50,50,1)] gap-4 relative">
-                                <div className="p-4 bg-[#1E1E1E] rounded-xl z-1">
-                                    <img src="/images/Frontend-session-icon.svg" alt="front-icon" />
-                                </div>
+                            <div className="w-[33%] py-8  pl-6 flex justify-start items-center border border-border-muted rounded-2xl bg-foreground hover:bg-dark-bg/50 transition duration-150 ease-in-out shadow-[0px_9px_0px_0px_rgba(50,50,50,1)] gap-4 relative">
+                            
+                                <img src="/images/Frontend-session-icon.svg" alt="front-icon" />
                                 <h3 className="text-xl font-semibold text-muted z-1">
                                     Frontend
                                 </h3>
@@ -29,10 +28,8 @@ export default function Home () {
                                     className="absolute right-0 top-0 z-0"
                                 />
                             </div>
-                            <div className="w-[33%] py-10 pr-20 pl-8 flex justify-start items-center border border-border-muted rounded-2xl bg-foreground hover:bg-dark-bg transition duration-150 ease-in-out shadow-[0px_9px_0px_0px_rgba(50,50,50,1)] gap-4 relative">
-                                <div className="p-4 bg-[#1E1E1E] rounded-xl z-1">
-                                    <img src="/images/Backend-session-icon.svg" alt="front-icon" />
-                                </div>
+                            <div className="w-[33%] py-10 pr-20 pl-8 flex justify-start items-center border border-border-muted rounded-2xl bg-foreground hover:bg-dark-bg/50 transition duration-150 ease-in-out shadow-[0px_9px_0px_0px_rgba(50,50,50,1)] gap-4 relative">
+                                <img src="/images/Backend-session-icon.svg" alt="front-icon" />
                                 <h3 className="text-xl font-semibold text-muted z-1">
                                     Backend
                                 </h3>
@@ -42,10 +39,8 @@ export default function Home () {
                                     className="absolute right-0 top-0 z-0"
                                 />
                             </div>
-                            <div className="w-[33%] py-10 pr-20 pl-8 flex justify-start items-center border border-border-muted rounded-2xl bg-foreground hover:bg-dark-bg transition duration-150 ease-in-out shadow-[0px_9px_0px_0px_rgba(50,50,50,1)] gap-4 relative">
-                                <div className="p-4 bg-[#1E1E1E] rounded-xl z-1">
-                                    <img src="/images/Fullstack-session-icon.svg" alt="front-icon" />
-                                </div>
+                            <div className="w-[33%] py-10 pr-20 pl-8 flex justify-start items-center border border-border-muted rounded-2xl bg-foreground hover:bg-dark-bg/50 transition duration-150 ease-in-out shadow-[0px_9px_0px_0px_rgba(50,50,50,1)] gap-4 relative">
+                                <img src="/images/Fullstack-session-icon.svg" alt="front-icon" />
                                 <h3 className="text-xl font-semibold text-muted z-1">
                                     Fullstack
                                 </h3>

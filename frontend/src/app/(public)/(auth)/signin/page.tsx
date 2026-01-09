@@ -106,7 +106,7 @@ export default function SignIn () {
                         />
 
                         <button
-                            className="w-full bg-primary text-foreground text-lg py-3 mt-8 rounded-xl font-bold hover:opacity-75 transition duration-150 ease-in-out cursor-pointer"
+                            className="w-full bg-primary text-foreground text-sm py-3 mt-8 rounded-xl font-bold hover:opacity-75 transition duration-150 ease-in-out cursor-pointer"
                             type='submit'
                         >
                             Entrar

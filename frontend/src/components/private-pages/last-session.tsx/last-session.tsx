@@ -5,18 +5,18 @@ export default function LastSession () {
 
     return (
         <>
-            <div className="w-[90%] py-6 px-5 border border-border-muted rounded-3xl ">
+            <div className="w-[90%] border border-border-muted rounded-xl ">
                 <div className="flex flex-col">
 
-                    <div className="flex justify-between mb-4">
+                    <div className="border-b px-5 py-4 border-border-muted flex justify-between mb-4">
                         <h3>Última sessão</h3>
 
                         <h6 className="opacity-80">Há 12 horas</h6>
 
                     </div>
 
-                    <div className="border-t border-border-muted py-4 hover:brightness-125 transition duration-150 ease-in-out cursor-pointer">
-                        <div className="bg-foreground py-3 px-5 rounded-xl flex flex-col hover:border hover:border-border-muted border border-transparent">
+                    <div className="px-5 hover:brightness-125 transition duration-150 ease-in-out cursor-pointer">
+                        <div className="bg-foreground py-3 px-5 rounded-md flex flex-col hover:border hover:border-border-muted border border-transparent">
                             <div className="flex justify-between items-center">
 
                                 <h3 className="font-medium text-text-light opacity-80">Criando sessão de contatos</h3>
@@ -50,7 +50,8 @@ export default function LastSession () {
                             </div>
                         </div>
                     </div>
-                    <span className="text-sm self-end text-muted hover:text-text-light hover:underline transition duration-100 ease-in-out cursor-default">
+                    
+                    <span className="text-sm px-5 py-4 self-end text-muted hover:text-text-light hover:underline transition duration-100 ease-in-out cursor-default">
                         Ver todas
                     </span>
                 </div>
