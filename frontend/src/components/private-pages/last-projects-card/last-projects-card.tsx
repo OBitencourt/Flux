@@ -7,7 +7,7 @@ export default function LastProjectsCard () {
 
                 <div className="flex flex-col min-h-10 border border-primary/10 bg-foreground  rounded-t-md relative">
 
-                    <div className="flex justify-between p-4 border-b border-border-muted">
+                    <div className="flex items-center justify-between p-4 border-b border-border-muted">
                         <h3 className="text-xl font-semibold">Projeto Flux</h3>
 
                         <div className="flex gap-3">
@@ -22,7 +22,7 @@ export default function LastProjectsCard () {
 
                     <div className="px-6 py-0.5">
 
-                        <div className="py-4">
+                        <div className="pt-4 pb-1">
                             <h4 className="opacity-80 font-normal">
                                 Descrição: <span className="font-light ml-2 text-sm">Projeto em que estou desenvolvendo um sistema de gestão de rotina e organização para programadores</span>
                             </h4>

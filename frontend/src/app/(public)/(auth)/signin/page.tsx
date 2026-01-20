@@ -6,6 +6,8 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useCookies } from 'react-cookie'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
+import { useState } from 'react'
+import { LoaderCircleIcon } from 'lucide-react'
 
 const userSignInSchema = z.object({
     email: z.string().nonempty("Insira um email válido."),
@@ -21,6 +23,7 @@ type UserSignInResponse = {
 }
 
 export default function SignIn () {
+    const [isLoading, setIsLoading] = useState(false)
     const [cookie, setCookie] = useCookies(["token", "userId"])
     const router = useRouter()
 
@@ -34,6 +37,7 @@ export default function SignIn () {
  
     const handleSignInSubmit = async (data: UserSignInType) => {
 
+        setIsLoading(true)
         const response = await fetch("http://localhost:3333/api/user/login", {
             method: 'POST',
             headers: {
@@ -50,10 +54,10 @@ export default function SignIn () {
         const userData:UserSignInResponse = await response.json()
 
         const { token, userId } = userData
-
         setCookie('token', token, {path: '/'})
         setCookie('userId', userId, {path: '/'})
-
+        setIsLoading(false)
+        
         if(token) {
             router.push("/dashboard/home")
         } else {
@@ -109,7 +113,17 @@ export default function SignIn () {
                             className="w-full bg-primary text-foreground text-sm py-3 mt-8 rounded-xl font-bold hover:opacity-75 transition duration-150 ease-in-out cursor-pointer"
                             type='submit'
                         >
-                            Entrar
+                            {
+                                isLoading ? (
+                                    <div className='flex gap-2 items-center justify-center'>
+                                        <LoaderCircleIcon className='text-foreground animate-spin' />
+                                        Loading...
+                                    </div>
+                                    
+                                ) : (
+                                    <p>Entrar</p>
+                                )
+                            }
                         </button>
 
                         <span className='text-sm mt-6 text-muted self-center'>
